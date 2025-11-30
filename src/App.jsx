@@ -5,6 +5,9 @@ import { TabNavigation } from "./components/Layout/TabNavigation";
 import { GameCatalogueTab } from "./components/GameCatalogue/GameCatalogueTab";
 import { UserServiceTab } from "./components/UserService/UserServiceTab";
 import { ReviewServiceTab } from "./components/ReviewService/ReviewServiceTab";
+import { NewsFeedTab } from "./components/NewsFeed/NewsFeedTab";
+import { LikesReviewTab } from "./components/LikesReview/LikesReviewTab";
+import { NotificationsTab } from "./components/Notifications/NotificationsTab";
 
 function App() {
   const [activeTab, setActiveTab] = useState("gameCatalogue");
@@ -14,6 +17,9 @@ function App() {
     { id: "gameCatalogue", label: "Game Catalogue" },
     { id: "userService", label: "User Service" },
     { id: "reviewService", label: "Review Service" },
+    { id: "newsFeed", label: "News Feed" },
+    { id: "likesReview", label: "Likes Review" },
+    { id: "notifications", label: "Notifications" },
   ];
 
   const renderTabContent = () => {
@@ -24,6 +30,12 @@ function App() {
         return <UserServiceTab auth={auth} />;
       case "reviewService":
         return <ReviewServiceTab />;
+      case "newsFeed":
+        return <NewsFeedTab />;
+      case "likesReview":
+        return <LikesReviewTab />;
+      case "notifications":
+        return <NotificationsTab />;
       default:
         return null;
     }
