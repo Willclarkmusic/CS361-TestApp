@@ -27,8 +27,8 @@ export const LikesReviewTab = () => {
     {
       title: "Like a Review",
       method: "POST",
-      path: "/likes/like/:userId/:reviewId",
-      description: "Like a review (or remove like if already liked). Publishes a notification.",
+      path: "/likes/like/:userId/:reviewId/:authorId",
+      description: "Like a review (or remove like if already liked). Publishes a notification to the author.",
       inputs: [
         {
           name: "userId",
@@ -46,10 +46,18 @@ export const LikesReviewTab = () => {
           required: true,
           hint: "ID of the review to like",
         },
+        {
+          name: "authorId",
+          label: "Author ID",
+          type: "number",
+          placeholder: "2",
+          required: true,
+          hint: "ID of the review author (for notification)",
+        },
       ],
       onTest: async (data) => {
         return await makeRequest(
-          `${baseUrl}/like/${data.userId}/${data.reviewId}`,
+          `${baseUrl}/like/${data.userId}/${data.reviewId}/${data.authorId}`,
           {
             method: "POST",
           }
@@ -59,8 +67,8 @@ export const LikesReviewTab = () => {
     {
       title: "Dislike a Review",
       method: "POST",
-      path: "/likes/dislike/:userId/:reviewId",
-      description: "Dislike a review (or remove dislike if already disliked). Publishes a notification.",
+      path: "/likes/dislike/:userId/:reviewId/:authorId",
+      description: "Dislike a review (or remove dislike if already disliked). Publishes a notification to the author.",
       inputs: [
         {
           name: "userId",
@@ -78,10 +86,18 @@ export const LikesReviewTab = () => {
           required: true,
           hint: "ID of the review to dislike",
         },
+        {
+          name: "authorId",
+          label: "Author ID",
+          type: "number",
+          placeholder: "2",
+          required: true,
+          hint: "ID of the review author (for notification)",
+        },
       ],
       onTest: async (data) => {
         return await makeRequest(
-          `${baseUrl}/dislike/${data.userId}/${data.reviewId}`,
+          `${baseUrl}/dislike/${data.userId}/${data.reviewId}/${data.authorId}`,
           {
             method: "POST",
           }
